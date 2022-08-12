@@ -68,3 +68,6 @@ function game(){
 }
 
 game();
+
+document.getElementById("message").innerHTML =
+"Your score: " + playerWins + " | Computer Score: " + computerWins + " | " + "Ties: " + ties;
