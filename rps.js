@@ -34,16 +34,7 @@ function randNum(min, max) {
     }
   }
 
-// console.log(playRound(rock, computer));
-// console.log(playRound(paper, computer));
-// console.log(playRound(scissors, computer));
-
 function game(){
-  // let computer = getComputerChoice();
-  let rock = "ROCK";
-  let paper = "PAPER";
-  let scissors = "SCISSORS";
-  
     for(let i = 1; i <=5; i++){
       let playerChoice = prompt("Enter rock, paper, or scissors: ");
       let computer = getComputerChoice();
