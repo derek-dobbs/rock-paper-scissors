@@ -31,28 +31,56 @@ $(document).ready(function () {
 
     if((pChoice == "rock" && cChoice == "scissors") || (pChoice == "paper" && cChoice == "rock") || (pChoice == "scissors" && cChoice == "paper")){
       playerWins += 1;
-      $('#player-wins').html(playerWins);
       return "Player Wins!"
     }
 
     if((cChoice == "rock" && pChoice == "scissors") || (cChoice == "paper" && pChoice == "rock") || (cChoice == "scissors" && pChoice == "paper")){
       computerWins += 1;
-      $('#computer-wins').html(computerWins);
+      
       return "Computer Wins"
     }
   }
   
+  function reset(){
+    playerWins = 0;
+    computerWins = 0;
+    ties = 0;
+    round = 0;
+    $('#winner').html();
+    $('#computer-wins').html();
+    $('#player-wins').html();
+    $('#ties').html();
+    $('#final-winner').html();
+    $('#round').html();
+    $('#player-choice').html();
+    $('#computer-choice').html();
+  }
 
   $("button"). click(function() {
+    $('#final-winner').html('');
     let playerChoice = $(this). val();
     let computerChoice = computerSelection();
     // alert(playerChoice + ", " + computerChoice);
     $('#winner').html(playRound(playerChoice, computerChoice));
-    
-    
-    
+    $('#computer-wins').html(computerWins);
+    $('#player-wins').html(playerWins);
+    $('#ties').html(ties);
 
-    
-  
+    if(round == 5){
+      // alert("Round 5");
+      if(playerWins == computerWins){
+        $('#final-winner').html("It's a tie");
+      }
+
+      if(playerWins > computerWins){
+        $('#final-winner').html("Player Wins!");
+      }
+
+      if(playerWins < computerWins){
+        $('#final-winner').html("Computer Wins");
+      }
+
+      reset();
+    }
     });
 });
