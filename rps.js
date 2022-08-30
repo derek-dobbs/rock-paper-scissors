@@ -17,7 +17,11 @@ $(document).ready(function () {
   let ties = 0;
   let round = 0;
 
+  $('#play-again-message').toggleClass('hide');
+
   function playRound(pChoice, cChoice){
+    // $('#play-again').toggleClass('hide');
+    $('#play-again-message').css('display', 'none');
     round += 1;
     $('#round').html(round);
 
@@ -54,9 +58,10 @@ $(document).ready(function () {
     $('#round').html();
     $('#player-choice').html();
     $('#computer-choice').html();
+    // $('#play-again').toggleClass('hide');
   }
 
-  $("button"). click(function() {
+  $(".weapon"). click(function() {
     $('#final-winner').html('');
     let playerChoice = $(this). val();
     let computerChoice = computerSelection();
@@ -69,18 +74,29 @@ $(document).ready(function () {
     if(round == 5){
       // alert("Round 5");
       if(playerWins == computerWins){
-        $('#final-winner').html("It's a tie");
+        $('#final-winner').html("Final Winner: It's a tie");
+        $('#play-again-message').toggleClass('hide');
+        // $('#play-again').toggleClass('show');
       }
 
       if(playerWins > computerWins){
-        $('#final-winner').html("Player Wins!");
+        $('#final-winner').html("Final Winner: Player");
+        $('#play-again-message').toggleClass('hide');
+        // $('#play-again').toggleClass('show');
       }
 
       if(playerWins < computerWins){
-        $('#final-winner').html("Computer Wins");
+        $('#final-winner').html("Final Winner: Computer");
+        $('#play-again-message').toggleClass('hide');
+        // $('#play-again').toggleClass('show');
       }
 
       reset();
     }
     });
+
+    // $('#play-again').click(function(){
+    //   $('#round').html();
+    //   $('#play-again').toggleClass('show');
+    // });
 });
